@@ -14,7 +14,6 @@ import { SwapiModule } from './swapi/swapi.module';
         useFindAndModify: true,
       },
     ),
-    ,
     PlanetsModule,
     SwapiModule,
   ],
