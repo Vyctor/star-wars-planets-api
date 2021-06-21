@@ -13,7 +13,7 @@ export class SwapiService {
 
     const planet = new SwapiPlanet(response.data.results[0]);
 
-    if (planet) {
+    if (!planet) {
       return 0;
     }
 
