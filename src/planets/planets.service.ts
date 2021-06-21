@@ -53,7 +53,7 @@ export class PlanetsService {
   }
 
   async getPlanetById(id: string): Promise<Planet> {
-    const planet = await this.planetModel.findById(id);
+    const planet = await this.planetModel.findOne({ _id: id });
 
     if (!planet) {
       throw new NotFoundException('Planet not found!');
@@ -68,6 +68,6 @@ export class PlanetsService {
       throw new BadRequestException(`Planet not found!`);
     }
 
-    await this.planetModel.deleteOne({ id }).exec();
+    await this.planetModel.deleteOne({ _id: id }).exec();
   }
 }
