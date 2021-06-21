@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreatePlanetDto } from './dtos/create-planet.dto';
@@ -35,5 +39,35 @@ export class PlanetsService {
 
   async getAllPlanets(): Promise<Array<Planet>> {
     return this.planetModel.find().exec();
+  }
+
+  async getPlanetByName(name: string): Promise<Planet> {
+    const planet = await this.planetModel.findOne({
+      name,
+    });
+
+    if (!planet) {
+      throw new NotFoundException('Planet not found!');
+    }
+    return planet;
+  }
+
+  async getPlanetById(id: string): Promise<Planet> {
+    const planet = await this.planetModel.findById(id);
+
+    if (!planet) {
+      throw new NotFoundException('Planet not found!');
+    }
+    return planet;
+  }
+
+  async deletePlanet(id: string): Promise<void> {
+    const planet = await this.planetModel.findById(id).exec();
+
+    if (!planet) {
+      throw new BadRequestException(`Planet not found!`);
+    }
+
+    await this.planetModel.deleteOne({ id }).exec();
   }
 }
