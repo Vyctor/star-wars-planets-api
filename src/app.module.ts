@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PlanetsModule } from './planets/planets.module';
+import { SwapiModule } from './swapi/swapi.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { PlanetsModule } from './planets/planets.module';
     ),
     ,
     PlanetsModule,
+    SwapiModule,
   ],
 })
 export class AppModule {}
