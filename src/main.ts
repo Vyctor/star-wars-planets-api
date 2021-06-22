@@ -9,7 +9,7 @@ async function bootstrap() {
     .setTitle('Star Wars Planets API')
     .setDescription('A simple star wars planets API.')
     .setVersion('1.0')
-    .addTag('planets')
+    .addTag('Planets')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
