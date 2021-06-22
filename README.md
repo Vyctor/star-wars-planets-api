@@ -1,4 +1,4 @@
-```s
+```
 Instruções gerais
 Dando continuidade ao nosso processo, temos um desafio para te propor! \o/
 
