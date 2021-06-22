@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import environment from './environments/development';
 import { PlanetsModule } from './planets/planets.module';
 import { SwapiModule } from './swapi/swapi.module';
-import environment from '../dist/environments/development';
 
 @Module({
   imports: [
