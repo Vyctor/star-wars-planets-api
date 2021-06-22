@@ -2,18 +2,16 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PlanetsModule } from './planets/planets.module';
 import { SwapiModule } from './swapi/swapi.module';
+import environment from '../dist/environments/development';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://admin:admin@cluster0.nwnlo.mongodb.net/star-wars-planets?retryWrites=true&w=majority',
-      {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true,
-        useFindAndModify: true,
-      },
-    ),
+    MongooseModule.forRoot(environment.MONGO_DB_ATLAS_URL, {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useUnifiedTopology: true,
+      useFindAndModify: true,
+    }),
     PlanetsModule,
     SwapiModule,
   ],
